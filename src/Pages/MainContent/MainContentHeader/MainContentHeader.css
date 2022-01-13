@@ -1,3 +1,25 @@
 .main-content-header {
   margin-top: 40px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.main-content-btn {
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 19px;
+  padding: 8px 12px;
+  outline: none;
+  border: 0;
+}
+
+.main-content-btn:last-child {
+  margin-left: 16px;
+  background-color: #2f6ce5;
+  color: white;
+}
+
+.main-content-btn-icon {
+  margin-left: 16.42px;
 }

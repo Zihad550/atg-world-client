@@ -1,31 +1,25 @@
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import authImage from "../../../images/authentication.png";
 import facebook from "../../../images/facebook_logo.png";
 import google from "../../../images/google_logo.png";
 import "../AuthModal.css";
-import SignInModal from "../SignInModal/SignInModal";
 
-const CreateAccountModal = ({
-  showCreateAccountModal,
+const SignInModal = ({
+  openSignInModal,
+  setOpenSignInModal,
   setShowCreateAccountModal,
 }) => {
-  const [openSignInModal, setOpenSignInModal] = useState(false);
-  const handleClose = () => setShowCreateAccountModal(false);
-  const handleOpenSignInModal = () => {
+  const handleClose = () => setOpenSignInModal(false);
+  const handleOpen = () => {
     handleClose();
-    setOpenSignInModal(true);
+    setShowCreateAccountModal(true);
   };
   return (
     <>
-      <Modal
-        size="lg"
-        centered
-        show={showCreateAccountModal}
-        onHide={handleClose}
-      >
+      <Modal size="lg" centered show={openSignInModal} onHide={handleClose}>
         <Modal.Header
           className=" authentication-header bg-success bg-opacity-25 text-center"
           closeButton
@@ -40,22 +34,9 @@ const CreateAccountModal = ({
         </Modal.Header>
         <Row className="modal-wrapper">
           <Col className="authentication-form-container">
-            <h4 className="auth-form-title my-4">Create Account</h4>
+            <h4 className="auth-form-title my-4">Sign In</h4>
             <Modal.Body className="p-0">
               <Form>
-                <Form.Group className="d-flex">
-                  <Form.Control
-                    className="auth-field"
-                    type="text"
-                    placeholder="First Name"
-                  />
-                  <Form.Control
-                    className="auth-field"
-                    type="text"
-                    placeholder="Last Name"
-                  />
-                </Form.Group>
-
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                   <Form.Control
                     className="auth-field"
@@ -70,19 +51,14 @@ const CreateAccountModal = ({
                     />
                     <FontAwesomeIcon className="passwordIcon" icon={faEye} />
                   </div>
-                  <Form.Control
-                    className="auth-field"
-                    type="password"
-                    placeholder="Confirm Password"
-                  />
                 </Form.Group>
 
                 <Button
-                  className="w-100 rounded-pill auth-btn"
+                  className="w-100 rounded-pill auth-btn signin-btn"
                   variant="primary"
                   type="submit"
                 >
-                  Create Account
+                  Sign In
                 </Button>
               </Form>
 
@@ -97,17 +73,19 @@ const CreateAccountModal = ({
                   Sign up with Google
                 </Button>
               </div>
+
+              <p className="forgot-password">Forgot Password</p>
             </Modal.Body>
           </Col>
           <Col className="d-flex flex-column">
             <div className="d-flex justify-content-end">
               <p className="auth-redirect-link">
-                Already have an account?{" "}
+                Don’t have an account yet?
                 <span
-                  onClick={handleOpenSignInModal}
-                  className="text-primary cursor-pointer"
+                  onClick={handleOpen}
+                  className="text-primary cursor-pointer ms-1"
                 >
-                  Sign In
+                  Create new for free!
                 </span>
               </p>
             </div>
@@ -118,23 +96,11 @@ const CreateAccountModal = ({
                 alt=""
               />
             </div>
-            <div>
-              <p className="auth-message ">
-                By signing up, you agree to our Terms & conditions, Privacy
-                policy
-              </p>
-            </div>
           </Col>
         </Row>
       </Modal>
-
-      <SignInModal
-        openSignInModal={openSignInModal}
-        setOpenSignInModal={setOpenSignInModal}
-        setShowCreateAccountModal={setShowCreateAccountModal}
-      />
     </>
   );
 };
 
-export default CreateAccountModal;
+export default SignInModal;

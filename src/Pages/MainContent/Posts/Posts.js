@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Post from "../Post/Post";
+import "./Posts.css";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -10,7 +11,7 @@ const Posts = () => {
       .then((data) => setPosts(data));
   }, []);
   return (
-    <Container>
+    <Container className="posts-container">
       {posts.map((post) => (
         <Post post={post} key={post.id} />
       ))}

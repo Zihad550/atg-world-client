@@ -1,38 +1,58 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { Container, Navbar } from "react-bootstrap";
 import logo from "../../../images/logo.png";
+import CreateAccountModal from "../../Authentication/CreateAccountModal/CreateAccountModal";
 import "./Header.css";
 
 const Header = () => {
+  const [showCreateAccountModal, setShowCreateAccountModal] = useState(false);
+  const handleShowCreateAccountModal = () => setShowCreateAccountModal(true);
   return (
-    <Navbar expand="lg">
-      <Container>
-        <Navbar.Brand href="#home">
-          <img className="img-fluid logo" src={logo} alt="" />
-        </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse id="navbar-nav">
-          <div className="input-group search-field d-flex align-items-center mx-auto justify-content-evenly">
-            <span className="">
-              <FontAwesomeIcon icon={faSearch} />
-            </span>
-            <div className="">
-              <input
-                className="bg-transparent w-100 my-auto border-transparent"
-                type="search"
-                placeholder="Search for your favorite groups in ATG"
-              />
+    <>
+      <Navbar expand="lg" className="my-3 p-0">
+        <Container>
+          <Navbar.Brand href="#home">
+            <img className="img-fluid logo" src={logo} alt="" />
+          </Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse id="navbar-nav">
+            <div className="input-group search-field d-flex align-items-center mx-auto justify-content-evenly">
+              <span className="">
+                <FontAwesomeIcon icon={faSearch} />
+              </span>
+              <div className="">
+                <input
+                  className="bg-transparent w-100 my-auto border-transparent"
+                  type="search"
+                  placeholder="Search for your favorite groups in ATG"
+                />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <p>Create account. It's free!</p>
-          </div>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+            <div>
+              <p className="m-0">
+                Create account.{" "}
+                <span
+                  onClick={handleShowCreateAccountModal}
+                  className="text-primary cursor-pointer"
+                >
+                  It's free!{" "}
+                  <FontAwesomeIcon icon={faCaretDown} className="text-dark" />
+                </span>
+              </p>
+            </div>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      {/* create account modal */}
+      <CreateAccountModal
+        showCreateAccountModal={showCreateAccountModal}
+        setShowCreateAccountModal={setShowCreateAccountModal}
+      />
+    </>
   );
 };
 

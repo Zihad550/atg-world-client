@@ -1,7 +1,7 @@
-import { faUserFriends } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faUserFriends } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import "./MainContentHeader.css";
 
 const MainContentHeader = () => {
@@ -20,10 +20,16 @@ const MainContentHeader = () => {
             <Nav.Link href="#">Job</Nav.Link>
           </Nav>
 
-          <Button>Write a Post</Button>
-          <Button>
+          <button className="main-content-btn">
+            Write a Post{" "}
+            <FontAwesomeIcon
+              className="main-content-btn-icon"
+              icon={faCaretDown}
+            />
+          </button>
+          <button className="main-content-btn">
             <FontAwesomeIcon icon={faUserFriends} /> Join Group
-          </Button>
+          </button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

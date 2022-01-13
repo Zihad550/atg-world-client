@@ -1,0 +1,115 @@
+.modal-wrapper {
+  padding: 0 36px 36px 36px;
+}
+.passwordField {
+  position: relative;
+}
+
+.passwordIcon {
+  position: absolute;
+  right: 4.17%;
+  top: 30%;
+}
+
+.authentication-title {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: center;
+  width: 100%;
+}
+
+.authentication-header {
+  height: 50px;
+}
+
+.auth-form-title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 31px;
+}
+
+.auth-field {
+  background: #f7f8fa;
+  border: 1px solid #d9d9db;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  color: #8a8a8a;
+  padding: 14px 0 14px 12px;
+  line-height: 16px;
+}
+
+.auth-btn {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 12px 0;
+  margin: 31px 0 36px;
+}
+
+.signin-btn {
+  margin: 19px 0 24px;
+}
+
+.brand-signin-btn {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 11px 0;
+  background: #ffffff;
+  border: 0.6px solid #d9d9db;
+  box-sizing: border-box;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-signin-btn:last-child {
+  margin-top: 8px;
+}
+
+.brand-signin-btn img {
+  margin-right: 10px;
+}
+
+.forgot-password {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: -0.008em;
+  margin-top: 23px;
+}
+
+.auth-redirect-link {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 17px;
+
+  text-align: right;
+
+  color: #3d3d3d;
+  margin-top: 31px;
+}
+
+.auth-message {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 16px;
+
+  text-align: right;
+  letter-spacing: -0.008em;
+
+  color: #000000;
+
+  opacity: 0.6;
+}
