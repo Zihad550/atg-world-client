@@ -1,0 +1,16 @@
+.search-field {
+  background-color: #f2f2f2;
+  border-radius: 21px;
+  width: 360px;
+  height: 42px;
+}
+
+.search-field input {
+  border-color: transparent;
+  font-size: 14px;
+}
+
+.logo {
+  height: 24px;
+  width: 162px;
+}

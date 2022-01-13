@@ -1,0 +1,43 @@
+[
+  {
+    "id": "1",
+    "category": "Article",
+    "tag": "Article",
+    "name": "What if famous brands had regular fonts? Meet RegulaBrands!",
+    "description": "I’ve worked in UX for the better part of a decade. From now on, I plan to rei…",
+    "admin": "Sarthak Kamra",
+    "adminImg": "https://i.ibb.co/jwjHFQw/person1.png",
+    "postImg": "https://i.ibb.co/N6jR6RM/post1.png"
+  },
+  {
+    "id": "2",
+    "category": "Education",
+    "tag": "Education",
+    "name": "Tax Benefits for Investment under National Pension Scheme launched by Government",
+    "description": "I’ve worked in UX for the better part of a decade. From now on, I plan to rei…",
+    "admin": "Sarah West",
+    "adminImg": "https://i.ibb.co/ZmgyX1F/person2.png",
+    "postImg": "https://i.ibb.co/tC5N8p8/post2.png"
+  },
+  {
+    "id": "3",
+    "category": "Event",
+    "tag": "Meetup",
+    "name": "Finance & Investment Elite Social Mixer @Lujiazui",
+    "admin": "Ronal Jones",
+    "date": "Fri, 12 Oct, 2018",
+    "destination": "Ahmedabad, India",
+    "adminImg": "https://i.ibb.co/8c6Ldv2/person3.png",
+    "postImg": "https://i.ibb.co/Dz8smWh/post3.png"
+  },
+  {
+    "id": "4",
+    "category": "Job",
+    "tag": "Job",
+    "name": "Software Developer",
+    "company": "Innovaccer Analytics Private Ltd.",
+    "destination": "Noida, India",
+    "admin": "Joseph Gray",
+    "adminImg": "https://i.ibb.co/BgCYzPz/person4.png"
+  }
+]
