@@ -1,0 +1,66 @@
+.post-tag {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+  margin: 20px 0 10px 0;
+}
+
+.post-name {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 134.17%;
+  width: 600px;
+}
+
+.post-description {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 19px;
+  line-height: 134.17%;
+  color: #5c5c5c;
+  margin: 12px 0 32px 0;
+}
+
+/* admin  */
+.admin-name {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
+.share-icon-wrapper {
+  background: #edeef0;
+  border-radius: 2px;
+  margin-left: 40px;
+}
+
+.post-common-btn {
+  background: #ffffff;
+  border: 0.7px solid #a9aeb8;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 140.4%;
+  padding: 10px 0;
+}
+
+.event-btn {
+  color: #e56135;
+}
+
+.apply-btn {
+  color: #02b875;
+}
+
+.location-icon {
+  font-size: 14px;
+}
+.share-icon {
+  margin: 10.5px 14.25px;
+}

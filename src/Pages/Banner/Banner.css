@@ -15,3 +15,24 @@
   left: 200px;
   bottom: 80px;
 }
+
+/* mobile screen */
+@media only screen and (max-width: 440px) {
+  .banner {
+    margin-top: -100px;
+    height: 236px;
+  }
+  .banner div {
+    left: 16px;
+    bottom: 32px;
+  }
+  .banner h1 {
+    font-size: 17px;
+  }
+  .banner p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

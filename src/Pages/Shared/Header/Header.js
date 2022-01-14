@@ -1,7 +1,11 @@
-import { faCaretDown, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faCaretDown,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Container, Navbar } from "react-bootstrap";
+import { Button, Container, Navbar } from "react-bootstrap";
 import logo from "../../../images/logo.png";
 import CreateAccountModal from "../../Authentication/CreateAccountModal/CreateAccountModal";
 import "./Header.css";
@@ -11,12 +15,20 @@ const Header = () => {
   const handleShowCreateAccountModal = () => setShowCreateAccountModal(true);
   return (
     <>
-      <Navbar expand="lg" className="my-3 p-0">
+      <Navbar expand="lg" className="my-3 p-0 navbar">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Toggle>
+            <FontAwesomeIcon className="toggler-icon" icon={faArrowLeft} />
+          </Navbar.Toggle>
+          <Navbar.Brand href="#home" className="d-none d-sm-block">
             <img className="img-fluid logo" src={logo} alt="" />
           </Navbar.Brand>
-          <Navbar.Toggle />
+          <div>
+            <Button variant="outlined-secondary" className="join-btn ">
+              Join Group
+            </Button>
+          </div>
+
           <Navbar.Collapse id="navbar-nav">
             <div className="input-group search-field d-flex align-items-center mx-auto justify-content-evenly">
               <span className="">

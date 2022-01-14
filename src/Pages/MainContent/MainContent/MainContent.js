@@ -6,7 +6,7 @@ import Posts from "../Posts/Posts";
 
 const MainContent = () => {
   return (
-    <Container>
+    <Container className="mb-5">
       <MainContentHeader />
       <Row>
         <Col xs={12} md={8}>

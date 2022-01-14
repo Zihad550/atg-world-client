@@ -20,18 +20,21 @@ const Groups = () => {
       .then((data) => setGroups(data));
   }, []);
   return (
-    <div>
-      <Form className="d-flex align-items-center border-bottom-2 location-form">
-        <FontAwesomeIcon
-          className="me-2 my-auto d-block"
-          icon={faUserFriends}
-        />
-        <input
-          onBlur={() => setShowAlert(false)}
-          onFocus={() => setShowAlert(true)}
-          className="border-0"
-        />
-        <FontAwesomeIcon icon={faPen} />
+    <div className="groups-container">
+      <Form className=" border-bottom-2 location-form mt-5 mb-3">
+        <div className="mb-2 d-flex align-items-center">
+          <FontAwesomeIcon
+            className="me-2 my-auto d-block"
+            icon={faUserFriends}
+          />
+          <input
+            onBlur={() => setShowAlert(false)}
+            onFocus={() => setShowAlert(true)}
+            placeholder="Enter your location"
+            className="border-0"
+          />
+          <FontAwesomeIcon icon={faPen} />
+        </div>
       </Form>
       <Alert className="d-flex" show={showAlert} variant="light">
         <div>
@@ -46,13 +49,15 @@ const Groups = () => {
       {/* groups */}
       {groups !== [] && (
         <>
-          <h4 className="text-uppercase">
+          <h4 className="text-uppercase recommended-title mb-4">
             <FontAwesomeIcon icon={faThumbsUp} /> Recommended Groups
           </h4>
           {groups.map((group) => (
             <Group group={group} key={group.id} />
           ))}
-          <a href="#">See More...</a>
+          <p className="text-primary cursor-pointer text-end mt-5">
+            See More...
+          </p>
         </>
       )}
     </div>

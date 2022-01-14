@@ -1,4 +1,16 @@
+.groups-container {
+  margin-left: 108.75px;
+}
+
 .location-form {
   border-bottom: 1px solid black;
   width: max-content;
+}
+
+.recommended-title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1em;
 }
