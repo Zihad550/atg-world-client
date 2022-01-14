@@ -29,7 +29,7 @@ const Post = ({ post }) => {
       {postImg && (
         <Card.Img className="img-fluid" variant="top" src={postImg} />
       )}
-      <Card.Body>
+      <Card.Body className="">
         {/* post tag */}
         <h4 className="post-tag">{tag}</h4>
         {/* post name */}
@@ -47,17 +47,17 @@ const Post = ({ post }) => {
           <div className="">
             <div className="d-flex mb-3">
               {date ? (
-                <div className="d-flex align-items-center me-5">
+                <div className="d-flex align-items-center me-5 common-icon-wrapper">
                   <FontAwesomeIcon className="me-2" icon={faCalendarDay} />
                   <p>{date}</p>
                 </div>
               ) : (
-                <div className="d-flex align-items-center me-5">
+                <div className="d-flex align-items-center me-1 me-sm-5 common-icon-wrapper">
                   <FontAwesomeIcon className="me-2" icon={faBriefcase} />
                   <p>{company}</p>
                 </div>
               )}
-              <div className="d-flex align-items-center">
+              <div className="d-flex align-items-center common-icon-wrapper">
                 <FontAwesomeIcon
                   className="location-icon me-2"
                   icon={faMapMarkerAlt}
@@ -83,20 +83,26 @@ const Post = ({ post }) => {
           </div>
         )}
       </Card.Body>
-      <Card.Footer className="bg-transparent border-0 d-flex justify-content-between">
+      <Card.Footer className="bg-transparent border-0 d-flex justify-content-between mb-3">
         {/* admin */}
         <div className="d-flex align-items-center">
           <img src={adminImg} alt="admin" />
-          <p className="admin-name">{admin}</p>
+          <div className="admin-info">
+            <p className="admin-name">{admin}</p>
+            <p className="text-secondary mb-0 ms-2 d-block d-sm-none">
+              1.4k views
+            </p>
+          </div>
         </div>
         {/* views and share */}
         <div className="d-flex align-items-center">
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center d-none d-sm-block">
             <FontAwesomeIcon icon={faEye} />
             <p className="text-secondary mb-0 ms-2">1.4k views</p>
           </div>
-          <div className="share-icon-wrapper cursor-pointer">
+          <div className="share-icon-wrapper cursor-pointer d-flex d-sm-block align-items-center ">
             <FontAwesomeIcon className="share-icon" icon={faShareAlt} />
+            <p className="d-block d-sm-none">Share</p>
           </div>
         </div>
       </Card.Footer>

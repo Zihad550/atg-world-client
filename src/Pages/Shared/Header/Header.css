@@ -22,7 +22,7 @@
 }
 
 /* mobile screen */
-@media only screen and (max-width: 440px) {
+@media only screen and (max-width: 360px) {
   .navbar {
     position: sticky;
     top: 0;
@@ -31,7 +31,6 @@
   }
   .join-btn {
     color: white;
-    margin-left: 220px;
   }
   .navbar-toggler {
     margin-right: auto;

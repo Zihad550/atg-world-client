@@ -17,16 +17,18 @@ const Header = () => {
     <>
       <Navbar expand="lg" className="my-3 p-0 navbar">
         <Container>
-          <Navbar.Toggle>
-            <FontAwesomeIcon className="toggler-icon" icon={faArrowLeft} />
-          </Navbar.Toggle>
-          <Navbar.Brand href="#home" className="d-none d-sm-block">
-            <img className="img-fluid logo" src={logo} alt="" />
-          </Navbar.Brand>
-          <div>
-            <Button variant="outlined-secondary" className="join-btn ">
-              Join Group
-            </Button>
+          <div className="d-flex justify-content-between w-100">
+            <Navbar.Toggle>
+              <FontAwesomeIcon className="toggler-icon" icon={faArrowLeft} />
+            </Navbar.Toggle>
+            <Navbar.Brand href="#home" className="d-none d-sm-block">
+              <img className="img-fluid logo" src={logo} alt="" />
+            </Navbar.Brand>
+            <div>
+              <Button variant="outlined-secondary" className="join-btn ">
+                Join Group
+              </Button>
+            </div>
           </div>
 
           <Navbar.Collapse id="navbar-nav">
@@ -45,7 +47,7 @@ const Header = () => {
 
             <div>
               <p className="m-0">
-                Create account.{" "}
+                Create account.
                 <span
                   onClick={handleShowCreateAccountModal}
                   className="text-primary cursor-pointer"

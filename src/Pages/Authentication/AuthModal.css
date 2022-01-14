@@ -113,3 +113,39 @@
 
   opacity: 0.6;
 }
+
+@media only screen and (max-width: 360px) {
+  .authentication-title {
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 23px;
+    margin: 20px 0;
+  }
+  .authentication-header {
+    background-color: white;
+    border: 0;
+  }
+  .modal-wrapper {
+    padding: 0px 20px 20px;
+  }
+  .auth-btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 22px 0;
+  }
+  .auth-btn-wrapper button {
+    flex-basis: 50%;
+    margin: 0;
+  }
+  .auth-btn-wrapper p {
+    flex-basis: 49%;
+    text-align: right;
+  }
+  .auth-message {
+    text-align: center;
+    margin-top: 22px;
+  }
+}

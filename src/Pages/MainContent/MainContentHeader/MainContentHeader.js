@@ -8,12 +8,16 @@ const MainContentHeader = () => {
   return (
     <Navbar expand="sm" className="main-content-header">
       <Container>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <div className="d-flex justify-content-between w-100">
+          <Nav.Link className="active me-auto" href="#">
+            All Posts(32)
+          </Nav.Link>
+          <Navbar.Toggle className="filter-toggler me-3">
+            Filter: All <FontAwesomeIcon className="ms-3" icon={faCaretDown} />
+          </Navbar.Toggle>
+        </div>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className="active" href="#">
-              All Posts(32)
-            </Nav.Link>
             <Nav.Link href="#">Article</Nav.Link>
             <Nav.Link href="#">Event</Nav.Link>
             <Nav.Link href="#">Education</Nav.Link>

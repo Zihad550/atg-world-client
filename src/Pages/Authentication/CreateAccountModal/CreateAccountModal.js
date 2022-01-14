@@ -27,20 +27,25 @@ const CreateAccountModal = ({
         onHide={handleClose}
       >
         <Modal.Header
-          className=" authentication-header bg-success bg-opacity-25 text-center"
+          className=" authentication-header  text-center"
           closeButton
         >
-          <Modal.Title
-            className=" text-center authentication-title 
-          "
-          >
-            Let's learn, share & inspire each other with our passion for
-            computer engineering. Sign up now 🤘🏼
+          <Modal.Title>
+            <p
+              className="d-none d-md-block text-center authentication-title 
+           "
+            >
+              Let's learn, share & inspire each other with our passion for
+              computer engineering. Sign up now 🤘🏼
+            </p>
+            <h4 className="authentication-title  my-4">Create Account</h4>
           </Modal.Title>
         </Modal.Header>
-        <Row className="modal-wrapper">
+        <Row className="modal-wrapper" xs={1} sm={2}>
           <Col className="authentication-form-container">
-            <h4 className="auth-form-title my-4">Create Account</h4>
+            <h4 className="auth-form-title my-4 d-none d-md-block">
+              Create Account
+            </h4>
             <Modal.Body className="p-0">
               <Form>
                 <Form.Group className="d-flex">
@@ -77,13 +82,23 @@ const CreateAccountModal = ({
                   />
                 </Form.Group>
 
-                <Button
-                  className="w-100 rounded-pill auth-btn"
-                  variant="primary"
-                  type="submit"
-                >
-                  Create Account
-                </Button>
+                {/* create account btn */}
+
+                <div className="auth-btn-wrapper">
+                  <Button
+                    className="w-100 rounded-pill auth-btn"
+                    variant="primary"
+                    type="submit"
+                  >
+                    Create Account
+                  </Button>
+                  <p
+                    onClick={handleOpenSignInModal}
+                    className="cursor-pointer text-decoration-underline d-block d-md-none"
+                  >
+                    or, Sign In
+                  </p>
+                </div>
               </Form>
 
               {/* brand authentications */}
@@ -101,7 +116,7 @@ const CreateAccountModal = ({
           </Col>
           <Col className="d-flex flex-column">
             <div className="d-flex justify-content-end">
-              <p className="auth-redirect-link">
+              <p className="auth-redirect-link d-none d-md-block">
                 Already have an account?{" "}
                 <span
                   onClick={handleOpenSignInModal}
@@ -111,7 +126,7 @@ const CreateAccountModal = ({
                 </span>
               </p>
             </div>
-            <div className="ms-auto my-auto">
+            <div className="ms-auto my-auto d-none d-md-block">
               <img
                 className="img-fluid d-inline-block"
                 src={authImage}

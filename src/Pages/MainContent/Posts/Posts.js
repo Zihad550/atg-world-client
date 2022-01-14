@@ -11,7 +11,7 @@ const Posts = () => {
       .then((data) => setPosts(data));
   }, []);
   return (
-    <Container className="posts-container">
+    <Container className="posts-container container-sm p-0">
       {posts.map((post) => (
         <Post post={post} key={post.id} />
       ))}

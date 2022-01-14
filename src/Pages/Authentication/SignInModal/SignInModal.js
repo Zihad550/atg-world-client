@@ -21,20 +21,23 @@ const SignInModal = ({
     <>
       <Modal size="lg" centered show={openSignInModal} onHide={handleClose}>
         <Modal.Header
-          className=" authentication-header bg-success bg-opacity-25 text-center"
+          className=" authentication-header  text-center"
           closeButton
         >
-          <Modal.Title
-            className=" text-center authentication-title 
-          "
-          >
-            Let's learn, share & inspire each other with our passion for
-            computer engineering. Sign up now 🤘🏼
+          <Modal.Title>
+            <p
+              className="d-none d-md-block text-center authentication-title 
+           "
+            >
+              Let's learn, share & inspire each other with our passion for
+              computer engineering. Sign up now 🤘🏼
+            </p>
+            <h4 className="authentication-title  my-4">Welcome back!</h4>
           </Modal.Title>
         </Modal.Header>
-        <Row className="modal-wrapper">
+        <Row md={2} xs={1} className="modal-wrapper">
           <Col className="authentication-form-container">
-            <h4 className="auth-form-title my-4">Sign In</h4>
+            <h4 className="auth-form-title my-4 d-none d-md-block">Sign In</h4>
             <Modal.Body className="p-0">
               <Form>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -53,13 +56,22 @@ const SignInModal = ({
                   </div>
                 </Form.Group>
 
-                <Button
-                  className="w-100 rounded-pill auth-btn signin-btn"
-                  variant="primary"
-                  type="submit"
-                >
-                  Sign In
-                </Button>
+                {/* sign in btn */}
+                <div className="auth-btn-wrapper">
+                  <Button
+                    className="w-100 rounded-pill auth-btn"
+                    variant="primary"
+                    type="submit"
+                  >
+                    Sign In
+                  </Button>
+                  <p
+                    onClick={handleOpen}
+                    className="cursor-pointer text-decoration-underline d-block d-md-none"
+                  >
+                    or, Create Account
+                  </p>
+                </div>
               </Form>
 
               {/* brand authentications */}
@@ -77,7 +89,7 @@ const SignInModal = ({
               <p className="forgot-password">Forgot Password</p>
             </Modal.Body>
           </Col>
-          <Col className="d-flex flex-column">
+          <Col className="d-none d-md-flex flex-column ">
             <div className="d-flex justify-content-end">
               <p className="auth-redirect-link">
                 Don’t have an account yet?
