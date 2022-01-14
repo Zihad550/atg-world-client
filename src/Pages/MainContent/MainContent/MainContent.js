@@ -9,10 +9,10 @@ const MainContent = () => {
     <Container className="mb-5 p-0">
       <MainContentHeader />
       <Row>
-        <Col xs={12} md={8}>
+        <Col xs={12} lg={8}>
           <Posts />
         </Col>
-        <Col className="d-none d-md-block" xs={12} md={4}>
+        <Col className="d-none d-lg-block" xs={12} lg={4}>
           <Groups />
         </Col>
       </Row>
