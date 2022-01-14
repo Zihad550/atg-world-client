@@ -15,28 +15,28 @@ const Header = () => {
   const handleShowCreateAccountModal = () => setShowCreateAccountModal(true);
   return (
     <>
-      <Navbar expand="lg" className="my-3 p-0 navbar">
+      <Navbar expand="md" className="my-3 p-0 navbar">
         <Container>
-          <div className="d-flex justify-content-between w-100">
+          <div className="d-flex justify-content-between navbar-toggler-wrapper ">
             <Navbar.Toggle>
               <FontAwesomeIcon className="toggler-icon" icon={faArrowLeft} />
             </Navbar.Toggle>
-            <Navbar.Brand href="#home" className="d-none d-sm-block">
+            <Navbar.Brand href="#home" className="d-none d-md-block">
               <img className="img-fluid logo" src={logo} alt="" />
             </Navbar.Brand>
-            <div>
+            <div className="d-block d-md-none">
               <Button variant="outlined-secondary" className="join-btn ">
                 Join Group
               </Button>
             </div>
           </div>
 
-          <Navbar.Collapse id="navbar-nav">
-            <div className="input-group search-field d-flex align-items-center mx-auto justify-content-evenly">
+          <Navbar.Collapse className="navbar-collapse">
+            <div className="input-group search-field d-flex align-items-center mx-auto justify-content-evenly ">
               <span className="">
                 <FontAwesomeIcon icon={faSearch} />
               </span>
-              <div className="">
+              <div>
                 <input
                   className="bg-transparent w-100 my-auto border-transparent"
                   type="search"

@@ -38,10 +38,12 @@ const CreateAccountModal = ({
               Let's learn, share & inspire each other with our passion for
               computer engineering. Sign up now 🤘🏼
             </p>
-            <h4 className="authentication-title  my-4">Create Account</h4>
+            <h4 className="authentication-title  my-4 d-block d-md-none">
+              Create Account
+            </h4>
           </Modal.Title>
         </Modal.Header>
-        <Row className="modal-wrapper" xs={1} sm={2}>
+        <Row className="modal-wrapper" xs={1} md={2}>
           <Col className="authentication-form-container">
             <h4 className="auth-form-title my-4 d-none d-md-block">
               Create Account

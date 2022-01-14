@@ -6,10 +6,10 @@ import "./MainContentHeader.css";
 
 const MainContentHeader = () => {
   return (
-    <Navbar expand="sm" className="main-content-header">
+    <Navbar expand="md" className="main-content-header">
       <Container>
-        <div className="d-flex justify-content-between w-100">
-          <Nav.Link className="active me-auto" href="#">
+        <div className="d-flex justify-content-between content-toggler-wrapper">
+          <Nav.Link className="active me-auto text-dark" href="#">
             All Posts(32)
           </Nav.Link>
           <Navbar.Toggle className="filter-toggler me-3">

@@ -32,7 +32,9 @@ const SignInModal = ({
               Let's learn, share & inspire each other with our passion for
               computer engineering. Sign up now 🤘🏼
             </p>
-            <h4 className="authentication-title  my-4">Welcome back!</h4>
+            <h4 className="authentication-title d-block d-md-none my-4">
+              Welcome back!
+            </h4>
           </Modal.Title>
         </Modal.Header>
         <Row md={2} xs={1} className="modal-wrapper">

@@ -96,7 +96,7 @@ const Post = ({ post }) => {
         </div>
         {/* views and share */}
         <div className="d-flex align-items-center">
-          <div className="d-flex align-items-center d-none d-sm-block">
+          <div className="align-items-center d-none d-md-flex">
             <FontAwesomeIcon icon={faEye} />
             <p className="text-secondary mb-0 ms-2">1.4k views</p>
           </div>

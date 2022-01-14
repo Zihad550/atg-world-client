@@ -12,7 +12,7 @@ const MainContent = () => {
         <Col xs={12} md={8}>
           <Posts />
         </Col>
-        <Col sx={12} md={4}>
+        <Col className="d-none d-md-block" xs={12} md={4}>
           <Groups />
         </Col>
       </Row>

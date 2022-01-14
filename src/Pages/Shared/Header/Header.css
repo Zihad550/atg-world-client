@@ -17,17 +17,23 @@
 
 .join-btn {
   border: 0.8px solid #ffffff;
-  box-sizing: border-box;
   border-radius: 4px;
+}
+.navbar-collapse {
+  width: 100%;
+  display: flex;
 }
 
 /* mobile screen */
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 770px) {
   .navbar {
     position: sticky;
     top: 0;
     z-index: 10;
     color: white;
+  }
+  .navbar-toggler-wrapper {
+    width: 100%;
   }
   .join-btn {
     color: white;
