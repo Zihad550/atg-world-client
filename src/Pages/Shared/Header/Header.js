@@ -6,11 +6,14 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Button, Container, Navbar } from "react-bootstrap";
+import useFirebase from "../../../hooks/useFirebase";
 import logo from "../../../images/logo.png";
 import CreateAccountModal from "../../Authentication/CreateAccountModal/CreateAccountModal";
 import "./Header.css";
 
 const Header = () => {
+  const { user, logOut } = useFirebase();
+  console.log(user);
   const [showCreateAccountModal, setShowCreateAccountModal] = useState(false);
   const handleShowCreateAccountModal = () => setShowCreateAccountModal(true);
   return (
@@ -46,16 +49,23 @@ const Header = () => {
             </div>
 
             <div>
-              <p className="m-0">
-                Create account.
-                <span
-                  onClick={handleShowCreateAccountModal}
-                  className="text-primary cursor-pointer"
-                >
-                  It's free!{" "}
-                  <FontAwesomeIcon icon={faCaretDown} className="text-dark" />
-                </span>
-              </p>
+              {user.email ? (
+                <div className="d-flex align-items-center">
+                  <h5 className="me-2 mb-0">{user.displayName}</h5>
+                  <Button onClick={logOut}>Log Out</Button>
+                </div>
+              ) : (
+                <p className="m-0">
+                  Create account.
+                  <span
+                    onClick={handleShowCreateAccountModal}
+                    className="text-primary cursor-pointer"
+                  >
+                    It's free!{" "}
+                    <FontAwesomeIcon icon={faCaretDown} className="text-dark" />
+                  </span>
+                </p>
+              )}
             </div>
           </Navbar.Collapse>
         </Container>

@@ -3,7 +3,6 @@ import { Button } from "react-bootstrap";
 import "./Group.css";
 
 const Group = ({ group }) => {
-  console.log(group);
   return (
     <div className="d-flex justify-content-between group">
       <div className="d-flex align-items-center">

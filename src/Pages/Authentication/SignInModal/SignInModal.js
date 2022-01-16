@@ -1,21 +1,50 @@
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Alert, Button, Col, Form, Modal, Row } from "react-bootstrap";
+import useFirebase from "../../../hooks/useFirebase";
 import authImage from "../../../images/authentication.png";
 import facebook from "../../../images/facebook_logo.png";
 import google from "../../../images/google_logo.png";
 import "../AuthModal.css";
+import PasswordResetModal from "../PasswordResetModal/PasswordResetModal";
 
 const SignInModal = ({
   openSignInModal,
   setOpenSignInModal,
   setShowCreateAccountModal,
 }) => {
+  const { login, error, user } = useFirebase();
+
+  const [loginData, setLoginData] = useState({});
+  const [openResetModal, setOpenResetModal] = useState(false);
+
+  /* modal functionalities */
   const handleClose = () => setOpenSignInModal(false);
   const handleOpen = () => {
     handleClose();
     setShowCreateAccountModal(true);
+  };
+
+  const handleOpenResetModal = () => {
+    handleClose();
+    setOpenResetModal(true);
+  };
+
+  // handle login
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    login(loginData);
+  };
+
+  const handleLoginData = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newData = { ...loginData };
+    newData[field] = value;
+    setLoginData(newData);
   };
   return (
     <>
@@ -41,22 +70,30 @@ const SignInModal = ({
           <Col className="authentication-form-container">
             <h4 className="auth-form-title my-4 d-none d-md-block">Sign In</h4>
             <Modal.Body className="p-0">
-              <Form>
+              <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                   <Form.Control
+                    onChange={handleLoginData}
                     className="auth-field"
                     type="email"
                     placeholder="Email"
+                    name="email"
+                    required
                   />
                   <div className="passwordField">
                     <Form.Control
+                      onChange={handleLoginData}
                       className="auth-field"
                       type="password"
                       placeholder="Password"
+                      name="password"
+                      required
                     />
                     <FontAwesomeIcon className="passwordIcon" icon={faEye} />
                   </div>
                 </Form.Group>
+
+                {error && <Alert variant="danger">{error}</Alert>}
 
                 {/* sign in btn */}
                 <div className="auth-btn-wrapper">
@@ -88,7 +125,13 @@ const SignInModal = ({
                 </Button>
               </div>
 
-              <p className="forgot-password">Forgot Password</p>
+              {/* forgot password */}
+              <p
+                onClick={handleOpenResetModal}
+                className="forgot-password cursor-pointer"
+              >
+                Forgot Password
+              </p>
             </Modal.Body>
           </Col>
           <Col className="d-none d-md-flex flex-column ">
@@ -113,6 +156,12 @@ const SignInModal = ({
           </Col>
         </Row>
       </Modal>
+      {/* password reset modal */}
+      <PasswordResetModal
+        setOpenSignInModal={setOpenSignInModal}
+        setOpenResetModal={setOpenResetModal}
+        openResetModal={openResetModal}
+      />
     </>
   );
 };

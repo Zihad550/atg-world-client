@@ -23,7 +23,6 @@ const Post = ({ post }) => {
     destination,
     company,
   } = post;
-  console.log(description);
   return (
     <Card className="mb-3">
       {postImg && (

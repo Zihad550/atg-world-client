@@ -1,7 +1,8 @@
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+import { Alert, Button, Col, Form, Modal, Row } from "react-bootstrap";
+import useFirebase from "../../../hooks/useFirebase";
 import authImage from "../../../images/authentication.png";
 import facebook from "../../../images/facebook_logo.png";
 import google from "../../../images/google_logo.png";
@@ -12,12 +13,41 @@ const CreateAccountModal = ({
   showCreateAccountModal,
   setShowCreateAccountModal,
 }) => {
+  const { registerUser, error } = useFirebase();
+
+  const [registerData, setRegisterData] = useState({});
+  const [matched, setMatched] = useState(false);
+
+  /* modal functionalities */
   const [openSignInModal, setOpenSignInModal] = useState(false);
   const handleClose = () => setShowCreateAccountModal(false);
   const handleOpenSignInModal = () => {
     handleClose();
     setOpenSignInModal(true);
   };
+
+  /* handle register data */
+  const handleRegister = (e) => {
+    console.log("insides");
+    setMatched(false);
+    e.preventDefault();
+    console.log(registerData);
+    if (registerData.password !== registerData.confirmPassword) {
+      return setMatched(true);
+    } else {
+      registerUser(registerData);
+    }
+  };
+
+  const handleFieldData = (e) => {
+    setMatched(false);
+    const field = e.target.name;
+    const value = e.target.value;
+    const newValue = { ...registerData };
+    newValue[field] = value;
+    setRegisterData(newValue);
+  };
+
   return (
     <>
       <Modal
@@ -49,12 +79,15 @@ const CreateAccountModal = ({
               Create Account
             </h4>
             <Modal.Body className="p-0">
-              <Form>
+              <Form onSubmit={handleRegister}>
                 <Form.Group className="d-flex">
                   <Form.Control
+                    onChange={handleFieldData}
                     className="auth-field"
                     type="text"
                     placeholder="First Name"
+                    name="name"
+                    required
                   />
                   <Form.Control
                     className="auth-field"
@@ -63,26 +96,36 @@ const CreateAccountModal = ({
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3">
                   <Form.Control
+                    onChange={handleFieldData}
                     className="auth-field"
                     type="email"
                     placeholder="Email"
+                    name="email"
                   />
                   <div className="passwordField">
                     <Form.Control
+                      onChange={handleFieldData}
                       className="auth-field"
                       type="password"
                       placeholder="Password"
+                      name="password"
                     />
                     <FontAwesomeIcon className="passwordIcon" icon={faEye} />
                   </div>
                   <Form.Control
+                    onChange={handleFieldData}
                     className="auth-field"
                     type="password"
                     placeholder="Confirm Password"
+                    name="confirmPassword"
                   />
                 </Form.Group>
+
+                {matched && (
+                  <Alert variant="danger">Password does not matches</Alert>
+                )}
 
                 {/* create account btn */}
 
