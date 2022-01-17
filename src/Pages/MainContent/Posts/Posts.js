@@ -8,7 +8,7 @@ const Posts = () => {
   const [updated, setUpdated] = useState(false);
   useEffect(() => {
     setUpdated(false);
-    fetch("http://localhost:8000/posts")
+    fetch("https://dry-reaches-58740.herokuapp.com/posts")
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, [updated]);

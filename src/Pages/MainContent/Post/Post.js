@@ -66,7 +66,7 @@ const Post = ({ post, setUpdated }) => {
   // handle delete
   const handleDeletePost = (id) => {
     window.confirm("Are you sure") &&
-      fetch(`http://localhost:8000/posts?id=${id}`, {
+      fetch(`https://dry-reaches-58740.herokuapp.com/posts?id=${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -79,7 +79,7 @@ const Post = ({ post, setUpdated }) => {
 
   /* handle like */
   const handleLike = () => {
-    fetch("http://localhost:8000/posts/like", {
+    fetch("https://dry-reaches-58740.herokuapp.com/posts/like", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

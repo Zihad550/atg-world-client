@@ -19,7 +19,7 @@ const CreatePost = ({ show, handleClose }) => {
   // send to the server
   const handleSavePost = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8000/posts", {
+    fetch("https://dry-reaches-58740.herokuapp.com/posts", {
       method: "POST",
       headers: {
         "content-type": "application/json",

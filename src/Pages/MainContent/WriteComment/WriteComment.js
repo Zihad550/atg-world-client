@@ -14,7 +14,7 @@ const WriteComment = ({ show, handleClose, setUpdated, post }) => {
       userName: user.displayName,
     };
     e.preventDefault();
-    fetch("http://localhost:8000/posts/comment", {
+    fetch("https://dry-reaches-58740.herokuapp.com/posts/comment", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
