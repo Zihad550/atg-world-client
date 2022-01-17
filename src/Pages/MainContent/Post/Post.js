@@ -35,6 +35,7 @@ const Post = ({ post, setUpdated }) => {
     company,
     _id,
     likesCount,
+    comments,
   } = post;
 
   // write comment modal functionalities
@@ -214,10 +215,19 @@ const Post = ({ post, setUpdated }) => {
               <FontAwesomeIcon icon={faEye} />
               <p className="text-secondary mb-0 ms-2">1.4k views</p>
             </div>
+
+            {/* likes */}
             <div className="align-items-center d-none d-md-flex mx-3">
               <FontAwesomeIcon icon={faThumbsUp} />
               <p className="text-secondary mb-0 ms-2">{likesCount}</p>
             </div>
+
+            {/* comments */}
+            <div className="align-items-center d-none d-md-flex mx-3">
+              <FontAwesomeIcon icon={faCommentDots} />
+              <p></p>
+            </div>
+
             <div className="share-icon-wrapper cursor-pointer d-flex d-sm-block align-items-center ">
               <FontAwesomeIcon className="share-icon" icon={faShareAlt} />
               <p className="d-block d-sm-none">Share</p>
