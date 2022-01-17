@@ -223,9 +223,28 @@ const Post = ({ post, setUpdated }) => {
             </div>
 
             {/* comments */}
-            <div className="align-items-center d-none d-md-flex mx-3">
-              <FontAwesomeIcon icon={faCommentDots} />
-              <p></p>
+            <div className="align-items-center d-none d-md-flex mx-3 flex-row">
+              <Accordion>
+                <Card>
+                  <Card.Header>
+                    <CustomToggle eventKey="0">
+                      <FontAwesomeIcon icon={faCommentDots} />
+                    </CustomToggle>
+                  </Card.Header>
+
+                  {/* post options */}
+                  <Accordion.Collapse eventKey="0">
+                    <Card.Body className="d-flex flex-column">
+                      {post?.comments?.map((x) => (
+                        <div className="mb-1 p-2 bg-info rounded-3">
+                          <h6>User: {x?.userEmail}</h6>
+                          <p>{x?.comment}</p>
+                        </div>
+                      ))}
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+              </Accordion>
             </div>
 
             <div className="share-icon-wrapper cursor-pointer d-flex d-sm-block align-items-center ">
