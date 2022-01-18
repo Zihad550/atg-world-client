@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { Alert, Button, Col, Form, Modal, Row } from "react-bootstrap";
-import useFirebase from "../../../hooks/useFirebase";
 import authImage from "../../../images/authentication.png";
 import "../AuthModal.css";
+import ResetPassword from "../ResetPassword/ResetPassword";
 
 const PasswordResetModal = ({
   setOpenSignInModal,
   setOpenResetModal,
   openResetModal,
 }) => {
-  const { error, user, resetPassword, setError } = useFirebase();
-
+  const [openPasswordResetModal, setOpenPasswordResetModal] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
   const [sendEmail, setSendEmail] = useState(false);
+  const [error, setError] = useState(false);
+  const [resetPassword, setResetPassword] = useState(false);
 
   /* modal functionalities */
   const handleClose = () => setOpenResetModal(false);
@@ -21,18 +22,36 @@ const PasswordResetModal = ({
     setOpenSignInModal(true);
   };
 
+  const handleOpenResetPassword = () => {
+    setOpenPasswordResetModal(true);
+    handleClose();
+  };
+
   const handleOnChange = (e) => {
-    setError("");
+    setError(false);
     setSendEmail(false);
     setResetEmail(e.target.value);
   };
 
   // handle reset password
+  console.log(resetEmail);
 
   const handleResetPassword = (e) => {
     e.preventDefault();
-    resetPassword(resetEmail);
-    setSendEmail(true);
+
+    fetch(`http://localhost:8000/forgotPassword?resetEmail=${resetEmail}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.length === 0) {
+          setError(true);
+        } else {
+          // setSendEmail(true);
+          setResetPassword(true);
+          handleOpenResetPassword();
+        }
+        console.log(data);
+        console.log(data[0]._id);
+      });
   };
 
   return (
@@ -73,14 +92,13 @@ const PasswordResetModal = ({
                   />
                 </Form.Group>
 
-                {error ? (
-                  <Alert variant="danger">{error}</Alert>
-                ) : (
-                  sendEmail && (
-                    <Alert variant="info">
-                      An password reset email has been sent
-                    </Alert>
-                  )
+                {sendEmail && (
+                  <Alert variant="info">
+                    An password reset email has been sent
+                  </Alert>
+                )}
+                {error && (
+                  <Alert variant="danger">User not found please register</Alert>
                 )}
 
                 {/* sign in btn */}
@@ -124,6 +142,12 @@ const PasswordResetModal = ({
           </Col>
         </Row>
       </Modal>
+
+      <ResetPassword
+        email={resetEmail}
+        setOpenPasswordResetModal={setOpenPasswordResetModal}
+        openPasswordResetModal={openPasswordResetModal}
+      />
     </>
   );
 };

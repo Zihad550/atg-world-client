@@ -4,18 +4,30 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Navbar } from "react-bootstrap";
-import useFirebase from "../../../hooks/useFirebase";
 import logo from "../../../images/logo.png";
 import CreateAccountModal from "../../Authentication/CreateAccountModal/CreateAccountModal";
 import "./Header.css";
 
 const Header = () => {
-  const { user, logOut } = useFirebase();
-  console.log(user);
+  const [user, setUser] = useState({});
   const [showCreateAccountModal, setShowCreateAccountModal] = useState(false);
   const handleShowCreateAccountModal = () => setShowCreateAccountModal(true);
+  const userId = JSON.parse(localStorage.getItem("userId"));
+  console.log(user);
+
+  useEffect(() => {
+    fetch(`https://dry-reaches-58740.herokuapp.com/user/register?id=${userId}`)
+      .then((res) => res.json())
+      .then((data) => setUser(data));
+  }, [userId]);
+
+  const logOut = () => {
+    setUser("");
+    localStorage.clear();
+  };
+
   return (
     <>
       <Navbar expand="md" className="my-3 p-0 navbar">
@@ -51,7 +63,7 @@ const Header = () => {
             <div>
               {user.email ? (
                 <div className="d-flex align-items-center">
-                  <h5 className="me-2 mb-0">{user.displayName}</h5>
+                  <h5 className="me-2 mb-0">{user.name}</h5>
                   <Button onClick={logOut}>Log Out</Button>
                 </div>
               ) : (

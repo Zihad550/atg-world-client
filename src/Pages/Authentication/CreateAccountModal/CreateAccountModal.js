@@ -2,7 +2,6 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Alert, Button, Col, Form, Modal, Row } from "react-bootstrap";
-import useFirebase from "../../../hooks/useFirebase";
 import authImage from "../../../images/authentication.png";
 import facebook from "../../../images/facebook_logo.png";
 import google from "../../../images/google_logo.png";
@@ -13,8 +12,6 @@ const CreateAccountModal = ({
   showCreateAccountModal,
   setShowCreateAccountModal,
 }) => {
-  const { registerUser, error } = useFirebase();
-
   const [registerData, setRegisterData] = useState({});
   const [matched, setMatched] = useState(false);
 
@@ -35,7 +32,20 @@ const CreateAccountModal = ({
     if (registerData.password !== registerData.confirmPassword) {
       return setMatched(true);
     } else {
-      registerUser(registerData);
+      fetch("https://dry-reaches-58740.herokuapp.com/user/register", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(registerData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          localStorage.setItem("userId", JSON.stringify(data.insertedId));
+          data.insertedId && alert("Successfully registered");
+          handleClose();
+        });
     }
   };
 

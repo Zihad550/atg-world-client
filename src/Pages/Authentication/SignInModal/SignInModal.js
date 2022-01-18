@@ -2,7 +2,6 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Alert, Button, Col, Form, Modal, Row } from "react-bootstrap";
-import useFirebase from "../../../hooks/useFirebase";
 import authImage from "../../../images/authentication.png";
 import facebook from "../../../images/facebook_logo.png";
 import google from "../../../images/google_logo.png";
@@ -14,7 +13,8 @@ const SignInModal = ({
   setOpenSignInModal,
   setShowCreateAccountModal,
 }) => {
-  const { login, error, user } = useFirebase();
+  const [user, setUser] = useState({});
+  const [error, setError] = useState(false);
 
   const [loginData, setLoginData] = useState({});
   const [openResetModal, setOpenResetModal] = useState(false);
@@ -35,11 +35,21 @@ const SignInModal = ({
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    login(loginData);
+    setError(false);
+    fetch(
+      `https://dry-reaches-58740.herokuapp.com/user/login?email=${loginData.email}&password=${loginData.password}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data);
+        data || setError(true);
+        data.email && handleClose();
+        localStorage.setItem("userId", JSON.stringify(data._id));
+      });
   };
 
   const handleLoginData = (e) => {
+    setError(false);
     const field = e.target.name;
     const value = e.target.value;
     const newData = { ...loginData };
@@ -92,8 +102,7 @@ const SignInModal = ({
                     <FontAwesomeIcon className="passwordIcon" icon={faEye} />
                   </div>
                 </Form.Group>
-
-                {error && <Alert variant="danger">{error}</Alert>}
+                {error && <Alert variant="danger">User not found</Alert>}
 
                 {/* sign in btn */}
                 <div className="auth-btn-wrapper">
