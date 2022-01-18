@@ -23,7 +23,7 @@ const ResetPassword = ({
   const handleResetPassword = (e) => {
     e.preventDefault();
     const user = { email, password };
-    fetch(`http://localhost:8000/resetPassword`, {
+    fetch(`https://dry-reaches-58740.herokuapp.com/resetPassword`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

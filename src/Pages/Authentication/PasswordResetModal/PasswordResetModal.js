@@ -39,7 +39,9 @@ const PasswordResetModal = ({
   const handleResetPassword = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:8000/forgotPassword?resetEmail=${resetEmail}`)
+    fetch(
+      `https://dry-reaches-58740.herokuapp.com/forgotPassword?resetEmail=${resetEmail}`
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.length === 0) {
