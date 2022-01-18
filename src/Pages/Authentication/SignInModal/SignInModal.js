@@ -45,6 +45,7 @@ const SignInModal = ({
         data || setError(true);
         data.email && handleClose();
         localStorage.setItem("userId", JSON.stringify(data._id));
+        window.location.reload();
       });
   };
 
