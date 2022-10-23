@@ -17,7 +17,7 @@ const Header = () => {
   const userId = JSON.parse(localStorage.getItem("userId"));
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/user/register?id=${userId}`)
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/user/register/${userId}`)
       .then((res) => res.json())
       .then((data) => setUser(data));
   }, [userId]);
@@ -60,7 +60,7 @@ const Header = () => {
             </div>
 
             <div>
-              {user.email ? (
+              {user?.email ? (
                 <div className="d-flex align-items-center">
                   <h5 className="me-2 mb-0">{user.name}</h5>
                   <Button onClick={logOut}>Log Out</Button>

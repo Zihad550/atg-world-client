@@ -64,7 +64,7 @@ const Post = ({ post, setUpdated }) => {
   // handle delete
   const handleDeletePost = (id) => {
     window.confirm("Are you sure") &&
-      fetch(`${process.env.REACT_APP_API_BASE_URL}/posts?id=${id}`, {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
