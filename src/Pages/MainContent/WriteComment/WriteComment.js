@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import useFirebase from "../../../hooks/useFirebase";
 
@@ -14,7 +14,7 @@ const WriteComment = ({ show, handleClose, setUpdated, post }) => {
       userName: user.displayName,
     };
     e.preventDefault();
-    fetch("https://dry-reaches-58740.herokuapp.com/posts/comment", {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/comment`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -24,7 +24,6 @@ const WriteComment = ({ show, handleClose, setUpdated, post }) => {
       .then((res) => res.json())
       .then((data) => {
         data.modifiedCount && setUpdated(true);
-        console.log(data);
       });
   };
 

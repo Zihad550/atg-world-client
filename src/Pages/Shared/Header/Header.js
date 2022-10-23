@@ -1,10 +1,10 @@
 import {
-  faArrowLeft,
-  faCaretDown,
-  faSearch,
+faArrowLeft,
+faCaretDown,
+faSearch
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Container, Navbar } from "react-bootstrap";
 import logo from "../../../images/logo.png";
 import CreateAccountModal from "../../Authentication/CreateAccountModal/CreateAccountModal";
@@ -15,10 +15,9 @@ const Header = () => {
   const [showCreateAccountModal, setShowCreateAccountModal] = useState(false);
   const handleShowCreateAccountModal = () => setShowCreateAccountModal(true);
   const userId = JSON.parse(localStorage.getItem("userId"));
-  console.log(user);
 
   useEffect(() => {
-    fetch(`https://dry-reaches-58740.herokuapp.com/user/register?id=${userId}`)
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/user/register?id=${userId}`)
       .then((res) => res.json())
       .then((data) => setUser(data));
   }, [userId]);

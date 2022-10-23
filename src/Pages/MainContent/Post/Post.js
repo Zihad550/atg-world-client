@@ -1,23 +1,23 @@
 import {
-  faBriefcase,
-  faCalendarDay,
-  faCommentDots,
-  faEllipsisH,
-  faEye,
-  faMapMarkerAlt,
-  faShareAlt,
-  faThumbsUp,
-  faTimes,
+faBriefcase,
+faCalendarDay,
+faCommentDots,
+faEllipsisH,
+faEye,
+faMapMarkerAlt,
+faShareAlt,
+faThumbsUp,
+faTimes
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
-  Accordion,
-  Button,
-  Card,
-  OverlayTrigger,
-  Tooltip,
-  useAccordionButton,
+Accordion,
+Button,
+Card,
+OverlayTrigger,
+Tooltip,
+useAccordionButton
 } from "react-bootstrap";
 import WriteComment from "../WriteComment/WriteComment";
 import "./Post.css";
@@ -45,9 +45,7 @@ const Post = ({ post, setUpdated }) => {
 
   /* post like, comment, delete function */
   function CustomToggle({ children, eventKey }) {
-    const decoratedOnClick = useAccordionButton(eventKey, () =>
-      console.log("totally custom!")
-    );
+    const decoratedOnClick = useAccordionButton(eventKey);
 
     return (
       <button className="border-0" type="button" onClick={decoratedOnClick}>
@@ -66,12 +64,11 @@ const Post = ({ post, setUpdated }) => {
   // handle delete
   const handleDeletePost = (id) => {
     window.confirm("Are you sure") &&
-      fetch(`https://dry-reaches-58740.herokuapp.com/posts?id=${id}`, {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/posts?id=${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           data.deletedCount > 0 && alert("Successfully deleted");
           setUpdated(true);
         });
@@ -79,7 +76,7 @@ const Post = ({ post, setUpdated }) => {
 
   /* handle like */
   const handleLike = () => {
-    fetch("https://dry-reaches-58740.herokuapp.com/posts/like", {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/posts/like`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -89,7 +86,6 @@ const Post = ({ post, setUpdated }) => {
       .then((res) => res.json())
       .then((data) => {
         data.modifiedCount && setUpdated(true);
-        console.log(data);
       });
   };
 

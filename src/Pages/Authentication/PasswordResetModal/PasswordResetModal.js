@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Alert, Button, Col, Form, Modal, Row } from "react-bootstrap";
 import authImage from "../../../images/authentication.png";
 import "../AuthModal.css";
@@ -33,14 +33,11 @@ const PasswordResetModal = ({
     setResetEmail(e.target.value);
   };
 
-  // handle reset password
-  console.log(resetEmail);
-
   const handleResetPassword = (e) => {
     e.preventDefault();
 
     fetch(
-      `https://dry-reaches-58740.herokuapp.com/forgotPassword?resetEmail=${resetEmail}`
+      `${process.env.REACT_APP_API_BASE_URL}/forgotPassword?resetEmail=${resetEmail}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -51,8 +48,6 @@ const PasswordResetModal = ({
           setResetPassword(true);
           handleOpenResetPassword();
         }
-        console.log(data);
-        console.log(data[0]._id);
       });
   };
 

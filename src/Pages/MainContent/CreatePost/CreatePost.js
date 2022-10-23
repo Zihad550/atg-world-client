@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import useFirebase from "../../../hooks/useFirebase";
 
 const CreatePost = ({ show, handleClose }) => {
   const [postData, setPostData] = useState({});
-  console.log(postData);
 
   const { user } = useFirebase();
 
@@ -19,7 +18,7 @@ const CreatePost = ({ show, handleClose }) => {
   // send to the server
   const handleSavePost = (e) => {
     e.preventDefault();
-    fetch("https://dry-reaches-58740.herokuapp.com/posts", {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/posts`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -33,7 +32,6 @@ const CreatePost = ({ show, handleClose }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         data.insertedId && alert("Post added successfully");
         handleClose();
         window.location.reload();

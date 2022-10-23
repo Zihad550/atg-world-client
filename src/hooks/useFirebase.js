@@ -1,13 +1,13 @@
 import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  sendPasswordResetEmail,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-  updateProfile,
+createUserWithEmailAndPassword,
+getAuth,
+GoogleAuthProvider,
+onAuthStateChanged,
+sendPasswordResetEmail,
+signInWithEmailAndPassword,
+signInWithPopup,
+signOut,
+updateProfile
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../Firebase/firebase.init";
@@ -53,7 +53,6 @@ const useFirebase = () => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
-        console.log(res);
         // set error
         setError("");
         setUser(res.user);
@@ -80,7 +79,6 @@ const useFirebase = () => {
       .then((res) => {
         setUser(res.user);
         setError("");
-        console.log(res);
       })
       .catch((error) => setError(error.message))
       .finally(() => setIsLoading(false));
@@ -99,9 +97,6 @@ const useFirebase = () => {
   // reset password
   const resetPassword = (email) => {
     sendPasswordResetEmail(auth, email)
-      .then((res) => {
-        console.log(res);
-      })
       .catch((error) => {
         setError(error.message);
       });

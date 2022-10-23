@@ -1,6 +1,6 @@
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Alert, Button, Col, Form, Modal, Row } from "react-bootstrap";
 import authImage from "../../../images/authentication.png";
 import facebook from "../../../images/facebook_logo.png";
@@ -37,7 +37,7 @@ const SignInModal = ({
     e.preventDefault();
     setError(false);
     fetch(
-      `https://dry-reaches-58740.herokuapp.com/user/login?email=${loginData.email}&password=${loginData.password}`
+      `${process.env.REACT_APP_API_BASE_URL}/user/login?email=${loginData.email}&password=${loginData.password}`
     )
       .then((res) => res.json())
       .then((data) => {
